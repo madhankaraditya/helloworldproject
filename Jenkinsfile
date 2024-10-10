@@ -5,13 +5,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'mvn clean package' // Example for Maven; adjust as needed
+                sh 'mvn clean package' // Adjust this if you're using a different build tool
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'mvn test' // Example for Maven; adjust as needed
+                sh 'mvn test' // Adjust this if you have a different testing setup
             }
         }
         stage('Deploy') {
@@ -19,7 +19,7 @@ pipeline {
                 echo 'Deploying..'
                 script {
                     def remoteHost = '198.23.164.145' // Your server IP
-                    def remoteDir = '/path/to/deployment/directory' // Change this to your desired path
+                    def remoteDir = '/path/to/deployment/directory' // Change to your desired path
                     sshagent(['root-ssh']) { // Use the credential ID you will create
                         sh "scp target/your-app.jar root@${remoteHost}:${remoteDir}" // Adjust the jar path
                         sh "ssh root@${remoteHost} 'java -jar ${remoteDir}/your-app.jar'" // Adjust the jar execution command
