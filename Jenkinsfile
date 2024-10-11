@@ -18,11 +18,11 @@ pipeline {
             steps {
                 echo 'Deploying..'
                 script {
-                    def remoteHost = '198.23.164.145' // Your server IP
-                    def remoteDir = '/path/to/deployment/directory' // Change to your desired path
-                    sshagent(['root-ssh']) { // Use the credential ID you will create
-                        sh "scp target/your-app.jar root@${remoteHost}:${remoteDir}" // Adjust the jar path
-                        sh "ssh root@${remoteHost} 'java -jar ${remoteDir}/your-app.jar'" // Adjust the jar execution command
+                    def remoteHost = '198.23.164.145' 
+                    def remoteDir = '/path/to/deployment/directory' 
+                    sshagent(['root-ssh']) { 
+                        sh "scp target/your-app.jar root@${remoteHost}:${remoteDir}" 
+                        sh "ssh root@${remoteHost} 'java -jar ${remoteDir}/your-app.jar'" 
                     }
                 }
             }
